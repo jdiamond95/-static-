@@ -2,7 +2,7 @@ import argparse
 import time
 from lib.fileDetails import printDetailsCLI
 from lib.entropy import printEntropyCLI
-
+from lib.virusTotal import printVTCLI
 
 banner = """
   /\//    __        __  _     /\//
@@ -17,13 +17,13 @@ def main():
     if args.cli:
         print(banner)
         while (True):
-            command = input(">>")
+            command = input("\n>>")
             if command == "details":
                 printDetailsCLI(args.file)
             elif command == "entropy":
                 printEntropyCLI(args.file)
             elif command == "virusTotal":
-                print("VT")
+                printVTCLI(args.file)
             elif command == "exit":
                 break
             else:
