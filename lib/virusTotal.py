@@ -9,6 +9,7 @@ virusTotalBase = "https://www.virustotal.com/vtapi/v2/"
 vtFileReport = "file/report"
 session = requests.Session()
 
+
 def queryVirusTotal(hash):
     params = {
             'apikey':vtAPIKey,
