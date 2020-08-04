@@ -3,6 +3,7 @@ import time
 from lib.fileDetails import printDetailsCLI
 from lib.entropy import printEntropyCLI
 from lib.virusTotal import printVTCLI
+from lib.headers import magicBytes
 
 banner = """
   /\//    __        __  _     /\//
@@ -24,6 +25,8 @@ def main():
                 printEntropyCLI(args.file)
             elif command == "virusTotal":
                 printVTCLI(args.file)
+            elif command == "headers":
+                magicBytes(args.file)    
             elif command == "exit":
                 break
             else:
