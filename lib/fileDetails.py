@@ -46,7 +46,7 @@ def getStrings(file, n):
         results = []
         currResult = ''
         for c in f.read():
-            if c in string.printable:
+            if c in string.printable and not c  == " " and not c == "\n":
                 currResult += c
                 continue
             if len(currResult) >= n:
@@ -54,6 +54,7 @@ def getStrings(file, n):
             currResult = ''
         if len(currResult) >= n:
             results.append(currResult)  
+    results = list(dict.fromkeys(results))
     return results
 
 

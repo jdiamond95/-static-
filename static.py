@@ -1,6 +1,6 @@
 import argparse
 import time
-from lib.fileDetails import printDetailsCLI
+from lib.fileDetails import printDetailsCLI, getStrings
 from lib.entropy import printEntropyCLI
 from lib.virusTotal import printVTCLI
 from lib.headers import magicBytes
@@ -25,6 +25,13 @@ def main():
                 printEntropyCLI(args.file)
             elif command == "virusTotal":
                 printVTCLI(args.file)
+            elif command.startswith("strings"):
+                command = command.split(" ")
+                if len(command) > 1:
+                    for string in getStrings(args.file, int(command[1])):
+                        print(string)
+                else:
+                    for string in getStrings(args.file, 5): print(string)
             elif command == "headers":
                 magicBytes(args.file)    
             elif command == "exit":
@@ -36,6 +43,8 @@ def main():
                         - details
                         - entropy
                         - virusTotal
+                        - strings
+                        - headers
                         - exit
                 ''')
 
